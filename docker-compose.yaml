@@ -3,5 +3,5 @@ services:
   dynamo-admin:
         image: instructure/dynamo-local-admin
         ports:
-            - "8000:8000"
-            - "8002:8002"
+            - '8000:8000'
+            - '8002:8002'

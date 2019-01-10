@@ -32,7 +32,7 @@ params = {
 	],
 	bio: {
 		birthday: '1983-11-24',
-		birth_place: 'Hamamasth/Shizuoka'
+		birth_place: 'Hamamatsu, Shizuoka'
 	}
 }
 user = User.new(params)
