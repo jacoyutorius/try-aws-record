@@ -22,7 +22,7 @@ cfg.migrate!
 
 
 # create user
-params = {
+user = User.new({
 	id: SecureRandom.uuid,
 	name: 'yuto ogi',
 	age: 35,
@@ -34,8 +34,7 @@ params = {
 		birthday: '1983-11-24',
 		birth_place: 'Hamamatsu, Shizuoka'
 	}
-}
-user = User.new(params)
+})
 user.save
 
 pp User.scan
