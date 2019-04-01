@@ -1,16 +1,7 @@
 require 'aws-record'
-require 'pp'
+require './models/user'
 
 Aws.config.update(endpoint: 'http://localhost:8002')
-
-class User
-	include Aws::Record
-	integer_attr :id, hash_key: true
-	string_attr :name
-	integer_attr :age
-	list_attr :posts
-	map_attr :bio
-end
 
 # create db
 cfg = Aws::Record::TableConfig.define do |t|
@@ -21,20 +12,24 @@ end
 cfg.migrate!
 
 
-# create user
-user = User.new({
-	id: SecureRandom.uuid,
-	name: 'yuto ogi',
-	age: 35,
-	posts: [
-		'Hey!',
-		'this is my first post!',
-	],
-	bio: {
-		birthday: '1983-11-24',
-		birth_place: 'Hamamatsu, Shizuoka'
-	}
-})
-user.save
+if __FILE__ == $0
+	require 'pp'
 
-pp User.scan
+	# create user
+	user = User.new({
+		id: SecureRandom.uuid,
+		name: 'yuto ogi',
+		age: 35,
+		posts: [
+			'Hey!',
+			'this is my first post!',
+		],
+		bio: {
+			birthday: '1983-11-24',
+			birth_place: 'Hamamatsu, Shizuoka'
+		}
+	})
+	user.save
+
+	pp User.scan
+end
